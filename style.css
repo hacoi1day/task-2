@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+/*CSS top*/
+.top {
+  background-color: #f7f7f7;
+}
+.top .left {
+  float: left;
+}
+.top .left h3.title {
+  font-weight: bold;
+  font-size: 36px;
+}
+.top .left h3.title i {
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: normal;
+  color: #d3d3d3;
+}
+.top .right {
+  float: right;
+}
+.top .right div.view ul {
+  list-style-type: none;
+}
+.top .right div.view ul li.view-style {
+  float: left;
+  padding: 3px 10px;
+  margin-right: 1px;
+  border: 1px solid #b5b5b5;
+  border-radius: 3px;
+  color: #555557;
+}
+.top .right div.view ul li.view-style i {
+  margin-right: 5px;
+}
+/*data-show*/
+.view li.data-show {
+  float: left;
+  margin-left: 7px;
+}
+.view li.data-show button#dropdownMenu2 {
+  padding: 3px 10px;
+  margin-right: 1px;
+  border: 1px solid #b5b5b5;
+  border-radius: 3px;
+  color: #555557;
+  background-color: transparent;
+}
+/*add-data*/
+.view li.add-data {
+  float: left;
+  margin-left: 7px;
+}
+.add-data button {
+  padding: 3px 10px;
+  border-radius: 3px;
+  color: white;
+}
+.add-data button i {
+  margin-right: 5px;
+}
+
+tr.select-month {
+  background-color: #263c47;
+}
+
+tr.clickable {
+  cursor: pointer;
+}
+tr.clickable td i {
+  margin-right: 15px;
+}
+table thead tr th {
+  /*text-align: center;*/
+}
+table.table thead th {
+  border-bottom: none;
+}
+/*CSS frozen left column*/
+.table-scroll {
+  position:relative;
+  max-width:1200px;
+  margin:auto;
+  overflow:hidden;
+  border:1px solid #000;
+}
+.table-wrap {
+  width:100%;
+  overflow:auto;
+}
+.table-scroll table {
+  width:100%;
+  margin:auto;
+  border-collapse:separate;
+  border-spacing:0;
+}
+.table-scroll th, .table-scroll td {
+  padding:5px 10px;
+  white-space:nowrap;
+  vertical-align:top;
+}
+.clone {
+  position:absolute;
+  top:0;
+  left:0;
+}
+.clone th, .clone td {
+  visibility:hidden;
+}
+.clone td, .clone th {
+  border-color:transparent;
+}
+.clone tbody th {
+  visibility:visible;
+}
+.clone .fixed-side {
+  background-color: white;
+  color: black;
+  visibility:visible;
+}
+.clone .row-head {
+  background-color: #263c47;
+  color: white;
+}
+.row-head {
+  background-color: #263c47;
+  color: white;
+}
+.clone .ptop {
+  padding-top: 49px;
+  /*padding-right: 13px;*/
+}
+.clone .normal {
+  font-weight: normal;
+}
+.clone thead, .clone tfoot{
+  background:transparent;
+}
+
+/*CSS Color*/
+table thead {
+  background-color: #00b1dd;
+  color: white;
+  font-style: normal;
+}
+table thead tr th {
+  text-transform: uppercase;
+}
+table thead th.select-month i {
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+tbody.session {
+  background-color: #ebebeb;
+  color: #555557;
+}
+tbody.session td {
+  font-weight: bold;
+  font-size: 14px;
+}
+tbody.stage {
+  color: #4e4f53;
+}
+tbody.stage th {
+
+}
+
+tbody.stage td:nth-child(1),
+tbody.stage td:nth-child(2),
+tbody.stage td:nth-child(3),
+tbody.stage td:nth-child(4),
+tbody.stage td:nth-child(5),
+tbody.stage td:nth-child(6) {
+  /*line-height: 15px;*/
+}
+tbody.stage td:nth-child(3) {
+  /*display: inline-block;*/
+  /*width: 300px;*/
+}
+
+.Normal {
+  background-color: #8dc15c;
+  /*border-right: 1px solid white;*/
+  border-bottom: 1px solid white;
+}
+.Critical {
+  background-color: #ef7373;
+  /*border-right: 1px solid white;*/
+  border-bottom: 1px solid white;
+}
+
+/*Custom checkbox*/
+.input-check {
+  display: block;
+  position: relative;
+  padding-right: 10px;
+  margin-bottom: -12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.input-check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: #eee;
+  margin-top: 4px;
+  border-radius: 2px;
+}
+.input-check:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.input-check input:checked ~ .checkmark {
+  background-color: green;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.input-check input:checked ~ .checkmark:after {
+  display: block;
+}
+.input-check .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*Delay show data*/
+.collapsing {
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+  visibility: hidden;
+}
+
+.collapse.show {
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+  visibility: visible;
+}
