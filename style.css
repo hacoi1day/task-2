@@ -125,7 +125,7 @@ table.table thead th {
 }
 .clone .fixed-side {
   background-color: white;
-  color: black;
+  color: #312D2D;
   visibility:visible;
 }
 .clone .row-head {
@@ -149,7 +149,7 @@ table.table thead th {
 
 /*CSS Color*/
 table thead {
-  background-color: #00b1dd;
+  background-color: #283c43;
   color: white;
   font-style: normal;
 }
@@ -191,21 +191,20 @@ tbody.stage td:nth-child(3) {
 
 .Normal {
   background-color: #8dc15c;
-  border: 1px solid gray;
-  border-right: none;
-  border-left: none;
+  border: 1px solid white;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 .Critical {
   background-color: #ef7373;
-  border: 1px solid gray;
-  border-right: none;
-  border-left: none;
+  border: 1px solid white;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 .status {
   border: 1px solid gray;
-  border: 1px solid gray;
-  border-right: none;
-  border-left: none;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .day {

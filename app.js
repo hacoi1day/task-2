@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
 });
 
 $(document).ready(function() {
-	sSource = 'https://api.nextfarm.vn/api/crop/overview?cropid=1&fromdate=2019-01-01&todate=2019-01-31';
+	sSource = 'https://api.nextfarm.vn/api/crop/overview?cropid=1&fromdate=2019-06-01&todate=2019-06-31';
 	loadAjaxTask(sSource);
 	/**
 	 * [loadAjaxTask gọi API và thực hiện in ra bảng dữ liệu]
@@ -17,7 +17,7 @@ $(document).ready(function() {
 	 		type: 'GET',
 	 		dataType: 'json',
 	 		headers: {
-	 			'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLm5leHRmYXJtLnZuXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTYwOTEwMTEzLCJleHAiOjE1NjA5NDYxMTMsIm5iZiI6MTU2MDkxMDExMywianRpIjoiNVV5QjMybmk5QXc4SXFlZCIsInN1YiI6MjEsInBydiI6Ijk0ZGJkOTYxYWFlZjBlM2NlNjZhZDdkNTBlNjQ3NzE3NjA5ZGRhMjQifQ.NZDGsKGFn-7EiZ4wG7Orn8Bjf1_mw9zvezeRDzh4G2E'
+	 			'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLm5leHRmYXJtLnZuXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTYwOTY0NDk0LCJleHAiOjE1NjEwMDA0OTQsIm5iZiI6MTU2MDk2NDQ5NCwianRpIjoiQ01IeXhoWkZUbXFTRjJZdSIsInN1YiI6MjEsInBydiI6Ijk0ZGJkOTYxYWFlZjBlM2NlNjZhZDdkNTBlNjQ3NzE3NjA5ZGRhMjQifQ.a-z4uSSp3T_5Y4DHcNNmLhhHcWxK0me0shKEs0KPPfE'
 	 		},
 	 	})
 	 	.done(function(response) {
@@ -44,10 +44,10 @@ $(document).ready(function() {
 	        <span class="checkmark"></span>
 	        </label>
 	        </th>
-	        <th rowspan="2" style="padding-top: 20px;" class="fixed-side row-head ptop" style="text-transform: uppercase;" scope="col">Công việc</th>
-	        <th rowspan="2" style="padding-top: 14px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>bắt đầu</th>
-	        <th rowspan="2" style="padding-top: 14px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>Kết thúc</th>
-	        <th rowspan="2" style="padding-top: 20px;" class="fixed-side row-head ptop" scope="col">Phụ trách</th>
+	        <th rowspan="2" style="padding-top: 22px;" class="fixed-side row-head ptop" style="text-transform: uppercase;" scope="col">Công việc</th>
+	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>bắt đầu</th>
+	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>Kết thúc</th>
+	        <th rowspan="2" style="padding-top: 22px;" class="fixed-side row-head ptop" scope="col">Phụ trách</th>
 	        <th colspan="27" class="fixed-side row-head select-month" style="text-align: center; background-color: #283c43;" scope="col">
 	        <i id="old-month" aria-hidden="true" class="fas fa-angle-left"></i>
 	        <span id="date">${monthShow}/${yearShow}</span>
@@ -67,7 +67,7 @@ $(document).ready(function() {
 	        		html += `<tbody class="session">
 	        		<tr data-toggle="collapse" data-target="#group-of-rows-${response[0]['seasons'][i]['id']}" aria-expanded="true" aria-controls="group-of-rows-1" class="clickable">
 	        		<th class="fixed-side row-head" style="background-color: #ebebeb; color: black; font-weight: normal;" colspan="37">
-	        		<i aria-hidden="true" style="margin-right: 5px;" class="fas fa-minus"></i>
+	        		<i style="margin-right: 5px;" class="fas fa-caret-down"></i>
 	        		${response[0]['seasons'][i]['name']}
 	        		</th>
 	        		</tr>
@@ -76,7 +76,7 @@ $(document).ready(function() {
 
 	        		if(response[0]['seasons'][i]['tasks'].length > 0) {
 	        			for (var j = 0; j < response[0]['seasons'][i]['tasks'].length; j++) {
-	        				html += `<tr>`;
+	        				html += `<tr style="border-bottom: 1px solid gray">`;
 	        				html += `<th class="fixed-side normal">${response[0]['seasons'][i]['tasks'][j]['id']}</th> 
 	        				<th class="fixed-side normal">
 	        				<label class="input-check">
@@ -164,12 +164,12 @@ $(document).ready(function() {
 				});
 
 				$('.clickable').on('click', function() {
-					if(this.getElementsByTagName('i')[0].classList.contains('fa-minus')) {
-						this.getElementsByTagName('i')[0].classList.add('fa-plus');
-						this.getElementsByTagName('i')[0].classList.remove('fa-minus');
+					if(this.getElementsByTagName('i')[0].classList.contains('fa-caret-down')) {
+						this.getElementsByTagName('i')[0].classList.add('fa-caret-up');
+						this.getElementsByTagName('i')[0].classList.remove('fa-caret-down');
 					} else {
-						this.getElementsByTagName('i')[0].classList.remove('fa-plus');
-						this.getElementsByTagName('i')[0].classList.add('fa-minus');
+						this.getElementsByTagName('i')[0].classList.remove('fa-caret-up');
+						this.getElementsByTagName('i')[0].classList.add('fa-caret-down');
 					}
 				})
 			});
