@@ -4,8 +4,7 @@ jQuery(document).ready(function() {
 });
 
 $(document).ready(function() {
-
-	sSource = 'https://api.nextfarm.vn/api/crop/overview?cropid=1&fromdate=2019-01-01&todate=2019-10-01';
+	sSource = 'https://api.nextfarm.vn/api/crop/overview?cropid=1&fromdate=2019-01-01&todate=2019-01-31';
 	loadAjaxTask(sSource);
 	/**
 	 * [loadAjaxTask gọi API và thực hiện in ra bảng dữ liệu]
@@ -46,10 +45,10 @@ $(document).ready(function() {
 	        </label>
 	        </th>
 	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Công việc</th>
-	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Start</th>
-	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Dealine</th>
+	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Ngày bắt đầu</th>
+	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Ngày Kết thúc</th>
 	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Người làm</th>
-	        <th colspan="18" class="fixed-side row-head select-month" style="text-align: center;" scope="col">
+	        <th colspan="14" class="fixed-side row-head select-month" style="text-align: center;" scope="col">
 	        <i id="old-month" aria-hidden="true" class="fas fa-angle-left"></i>
 	        <span id="date">${monthShow}/${yearShow}</span>
 	        <i id="new-month" aria-hidden="true" class="fas fa-angle-right"></i>
@@ -119,10 +118,12 @@ $(document).ready(function() {
 
 	        $('#data').html(html).promise().done(function(){
 	        	jQuery(document).ready(function() {
-	        		jQuery(".main-table").clone(true).appendTo('#data').addClass('clone');
-	        	});
+					jQuery(".main-table").clone(true).appendTo('#data').addClass('clone');
+				});
 				// xử lý khi chuyển tháng
 				$('#old-month').click(function() {
+					// hiển thị loading
+					$('#loading').addClass('show-loading');
 					month = getMonthCurrent();
 					year = getYearCurrent();
 					if(month == 1) {
@@ -142,6 +143,8 @@ $(document).ready(function() {
 				});
 
 				$('#new-month').on('click', function() {
+					// hiển thị loading
+					$('#loading').addClass('show-loading');
 					month = getMonthCurrent();
 					year = getYearCurrent();
 					if(month == 12) {
@@ -170,7 +173,10 @@ $(document).ready(function() {
 					}
 				})
 			});
-	    });
+	    })
+		.always(function() {
+			$('#loading').removeClass('show-loading');
+		});
 	}
 
 	/**
@@ -224,7 +230,7 @@ $(document).ready(function() {
 	 		if((i >= dayStart && i <= dayEnd && monthStart == monthShow) || (i >= 1 && i <= getDay(end)) && monthStart == monthShow-1) {
 	 			html += `<td class="${status}"></td>`;
 	 		} else {
-	 			html += `<td></td>`;
+	 			html += `<td class="status"></td>`;
 	 		}
 	 	}
 	 	return html;

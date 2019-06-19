@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 * {
   margin: 0px;
   padding: 0px;
-  font-family: 'Roboto', sans-serif;
+  font-family: Arial;
 }
 /*CSS top*/
 .top {
@@ -96,7 +95,7 @@ table.table thead th {
 .table-scroll table {
   width:100%;
   margin:auto;
-  border-collapse:separate;
+  /*border-collapse:separate;*/
   border-spacing:0;
 }
 .table-scroll th, .table-scroll td {
@@ -131,8 +130,8 @@ table.table thead th {
   background-color: #263c47;
   color: white;
 }
-.clone .ptop {
-  padding-top: 49px;
+.ptop {
+  padding-top: 49px!important;
   /*padding-right: 13px;*/
 }
 .clone .normal {
@@ -183,16 +182,27 @@ tbody.stage td:nth-child(3) {
   /*display: inline-block;*/
   /*width: 300px;*/
 }
+.main-table td.status, .main-table th.status, .main-table tr.status {
+  border: 1px solid gray;
+}
 
 .Normal {
   background-color: #8dc15c;
-  /*border-right: 1px solid white;*/
-  border-bottom: 1px solid white;
+  border: 1px solid gray;
+  border-right: none;
+  border-left: none;
 }
 .Critical {
   background-color: #ef7373;
-  /*border-right: 1px solid white;*/
-  border-bottom: 1px solid white;
+  border: 1px solid gray;
+  border-right: none;
+  border-left: none;
+}
+.status {
+  border: 1px solid gray;
+  border: 1px solid gray;
+  border-right: none;
+  border-left: none;
 }
 
 /*Custom checkbox*/
@@ -262,4 +272,26 @@ tbody.stage td:nth-child(3) {
   -webkit-transition-delay: 1s;
   transition-delay: 1s;
   visibility: visible;
+}
+
+/*Hiệu ứng loading*/
+.main-data {
+    position: relative;
+}
+.main-data .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    margin-top: -100px;
+    z-index: 1;
+}
+.loading img {
+  background: transparent;
+  height: 200px;
+  width: 200px;
+  display: none;
+}
+.show-loading img {
+  display: block;
 }
