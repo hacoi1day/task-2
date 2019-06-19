@@ -37,18 +37,18 @@ $(document).ready(function() {
 	        <table style="width: 100%" class="main-table">
 	        <thead>
 	        <tr>
-	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">#</th>
-	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">
+	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">&nbsp;</th>
+	        <th rowspan="2" style="padding-top: 20px;" class="fixed-side row-head ptop" scope="col">
 	        <label class="input-check">
 	        <input type="checkbox" name="">
 	        <span class="checkmark"></span>
 	        </label>
 	        </th>
-	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Công việc</th>
-	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Ngày bắt đầu</th>
-	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Ngày Kết thúc</th>
-	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">Người làm</th>
-	        <th colspan="14" class="fixed-side row-head select-month" style="text-align: center;" scope="col">
+	        <th rowspan="2" style="padding-top: 20px;" class="fixed-side row-head ptop" style="text-transform: uppercase;" scope="col">Công việc</th>
+	        <th rowspan="2" style="padding-top: 14px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>bắt đầu</th>
+	        <th rowspan="2" style="padding-top: 14px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>Kết thúc</th>
+	        <th rowspan="2" style="padding-top: 20px;" class="fixed-side row-head ptop" scope="col">Phụ trách</th>
+	        <th colspan="27" class="fixed-side row-head select-month" style="text-align: center; background-color: #283c43;" scope="col">
 	        <i id="old-month" aria-hidden="true" class="fas fa-angle-left"></i>
 	        <span id="date">${monthShow}/${yearShow}</span>
 	        <i id="new-month" aria-hidden="true" class="fas fa-angle-right"></i>
@@ -57,7 +57,7 @@ $(document).ready(function() {
 	        <tr>`;
 	        for (var i = 0; i < countDay; i++)
 	        {
-	        	html += `<th scope="col" width="25px" class="day">${allDay[i][0]}<br>${allDay[i][1]}</th> `;
+	        	html += `<th scope="col" style="" class="day text-center">${allDay[i][0]}<br>${allDay[i][1]}</th> `;
 	        }
 	        html += `</tr>`;
 	        html += `</thead>`;

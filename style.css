@@ -65,7 +65,7 @@
 }
 
 tr.select-month {
-  background-color: #263c47;
+  background-color: #283d42;
 }
 
 tr.clickable {
@@ -88,9 +88,15 @@ table.table thead th {
   overflow:hidden;
   border:1px solid #000;
 }
+.t {
+  text-transform: uppercase;
+}
 .table-wrap {
   width:100%;
   overflow:auto;
+}
+.table-wrap table .row-head {
+  font-weight: normal;
 }
 .table-scroll table {
   width:100%;
@@ -123,15 +129,15 @@ table.table thead th {
   visibility:visible;
 }
 .clone .row-head {
-  background-color: #263c47;
+  background-color: #148e08;
   color: white;
+  font-weight: normal;
 }
 .row-head {
-  background-color: #263c47;
+  /*background-color: ;*/
   color: white;
 }
 .ptop {
-  padding-top: 49px!important;
   /*padding-right: 13px;*/
 }
 .clone .normal {
@@ -147,9 +153,6 @@ table thead {
   color: white;
   font-style: normal;
 }
-table thead tr th {
-  text-transform: uppercase;
-}
 table thead th.select-month i {
   margin-left: 20px;
   margin-right: 20px;
@@ -160,7 +163,7 @@ tbody.session {
   color: #555557;
 }
 tbody.session td {
-  font-weight: bold;
+  font-weight: normal;
   font-size: 14px;
 }
 tbody.stage {
@@ -203,6 +206,15 @@ tbody.stage td:nth-child(3) {
   border: 1px solid gray;
   border-right: none;
   border-left: none;
+}
+
+.day {
+  padding: 0px 3px!important;
+  border-right: 1px solid white;
+  font-weight: normal;
+  background-color: #283d42;
+  font-size: 14px;
+
 }
 
 /*Custom checkbox*/
