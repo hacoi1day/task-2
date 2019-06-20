@@ -282,16 +282,70 @@ $(document).ready(function() {
 	 	yearStart = getYear(start);
 	 	yearEnd = getYear(end);
 
-
-	 	if(monthEnd > monthStart) {
-	 		dayEnd = countDay;
-	 	}
 	 	html = ``;
 	 	for(var i = 1; i <= countDay; i++) {
-	 		if((i >= dayStart && i <= dayEnd && monthStart == monthShow) || (i >= dayStart && i <= countDay && monthStart < monthShow) || (i >= 1 && i <= getDay(end))) {
-	 			html += `<td class="${status}"></td>`;
-	 		} else {
-	 			html += `<td class="status"></td>`;
+	 		if(yearStart == yearEnd && yearShow == yearStart) {
+	 			if(monthStart == monthEnd && monthStart == monthShow) {
+	 				if(i >= dayStart && i <= dayEnd) {
+	 					html += `<td class="${status}"></td>`;
+	 				} else {
+	 					html += `<td class="status"></td>`;
+	 				}
+	 			} else if (monthStart < monthEnd) {
+	 				if (monthShow < monthEnd) {
+	 					if (i >= dayStart && i <= countDay) {
+	 						html += `<td class="${status}"></td>`;
+	 					} else {
+	 						html += `<td class="status"></td>`;
+	 					}
+	 				} else if (monthShow == monthEnd) {
+	 					if(i >= 1 && i <= dayEnd) {
+	 						html += `<td class="${status}"></td>`;
+	 					} else {
+	 						html += `<td class="status"></td>`;
+	 					}
+	 				} else {
+	 					html += `<td class="status"></td>`;
+	 				}
+	 			}
+	 		} else if(yearStart < yearEnd) {
+	 			if(yearShow == yearStart) {
+	 				if(monthShow == monthStart) {
+	 					if(i >= dayStart && i <= countDay) {
+	 						html += `<td class="${status}"></td>`;
+	 					} else {
+	 						html += `<td class="status"></td>`;
+	 					}
+	 				} else {
+	 					if(i >= 1 && i <= countDay) {
+	 						html += `<td class="${status}"></td>`;
+	 					} else {
+	 						html += `<td class="status"></td>`;
+	 					}
+	 				}
+	 			} else if(yearShow > yearStart && yearShow < yearEnd) {
+	 				if(monthShow >= 1 && monthShow <= 12) {
+	 					if(i >= 1 && i <= countDay) {
+	 						html += `<td class="${status}"></td>`;
+	 					} else {
+	 						html += `<td class="status"></td>`;
+	 					}
+	 				}
+	 			} else if(yearShow == yearEnd) {
+	 				if(monthShow < monthEnd) {
+	 					if(i >= 1 && i <= countDay) {
+	 						html += `<td class="${status}"></td>`;
+	 					} else {
+	 						html += `<td class="status"></td>`;
+	 					}
+	 				} else if(monthShow == monthEnd) {
+	 					if(i >= 1 && i <= dayEnd) {
+	 						html += `<td class="${status}"></td>`;
+	 					} else {
+	 						html += `<td class="status"></td>`;
+	 					}
+	 				}
+	 			}
 	 		}
 	 	}
 	 	return html;
