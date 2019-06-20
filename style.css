@@ -88,7 +88,6 @@ table.table thead th {
   max-width:100%;
   margin:auto;
   overflow:hidden;
-  /*border:1px solid #000;*/
 }
 .t {
   text-transform: uppercase;
@@ -147,6 +146,7 @@ table.table thead th {
 }
 .clone thead, .clone tfoot{
   background:transparent;
+  border: none;
 }
 
 /*CSS Color*/
@@ -178,7 +178,6 @@ table.main-table thead th.day {
   width: 25px;
 }
 
-
 table thead {
   background-color: #283c43;
   color: white;
@@ -200,9 +199,6 @@ tbody.session td {
 }
 tbody.stage {
   font-size: 15px;
-}
-tbody.stage th {
-
 }
 
 .main-table td.status, .main-table th.status, .main-table tr.status {
@@ -305,8 +301,8 @@ tbody.stage th {
   visibility: visible;
 }*/
 
-/*Hiệu ứng loading*/
-.main-data {
+
+/*.main-data {
     position: relative;
 }
 .main-data .loading {
@@ -317,6 +313,7 @@ tbody.stage th {
     margin-top: -100px;
     z-index: 1;
 }
+
 .loading img {
   background: transparent;
   height: 200px;
@@ -325,6 +322,31 @@ tbody.stage th {
 }
 .show-loading img {
   display: block;
+}*/
+
+/*Hiệu ứng loading*/
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -60px;
+  margin-top: -60px;
+  z-index: 1;
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #148e08;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  display: none;
+}
+.show-loading {
+  display: block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /*Style date*/
@@ -373,3 +395,19 @@ span.completed {
   border-radius: 3px;
 }
 
+/*Response*/
+@media (min-width: 576px) { 
+  
+}
+
+@media (min-width: 768px) {
+  
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
