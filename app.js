@@ -48,6 +48,7 @@ $(document).ready(function() {
 	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>bắt đầu</th>
 	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>Kết thúc</th>
 	        <th rowspan="2" style="padding-top: 25px;" class="fixed-side row-head ptop" scope="col">Phụ trách</th>
+	        <th rowspan="2" style="padding-top: 16px; text-align: center;" class="fixed-side row-head ptop" scope="col">Tình<br>trạng</th>
 	        <th colspan="${countDay}" class="fixed-side row-head select-month" style="text-align: left; background-color: #283c43; width: 1200px;" scope="col">
 		        <i id="old-month" aria-hidden="true" class="fas fa-angle-left"></i>
 		        <span id="date">${monthShow}/ ${yearShow}</span>
@@ -67,8 +68,8 @@ $(document).ready(function() {
 	        		html += `<tbody class="session">
 	        		<tr data-toggle="collapse" data-target="#group-of-rows-${response[0]['seasons'][i]['id']}" aria-expanded="true" aria-controls="group-of-rows-1" class="clickable">
 	        		<th class="fixed-side row-head" style="background-color: #ebebeb; color: black; font-weight: normal;" colspan="37">
-	        		<i style="margin-right: 5px;" class="fas fa-caret-down"></i>
-	        		${response[0]['seasons'][i]['name']}
+	        			<i style="margin-right: 5px;" class="fas fa-caret-down"></i>
+	        			${response[0]['seasons'][i]['name']}
 	        		</th>
 	        		</tr>
 	        		</tbody>`;
@@ -87,7 +88,8 @@ $(document).ready(function() {
 	        				<th class="fixed-side normal">${response[0]['seasons'][i]['tasks'][j]['category_name']}</th> 
 	        				<th class="fixed-side normal">${formatDate(response[0]['seasons'][i]['tasks'][j]['start'])}</th>
 	        				<th class="fixed-side normal">${formatDate(response[0]['seasons'][i]['tasks'][j]['end'])}</th> 
-	        				<th class="fixed-side normal">${response[0]['seasons'][i]['tasks'][j]['firstname']} ${response[0]['seasons'][i]['tasks'][j]['lastname']}</th> `;
+	        				<th class="fixed-side normal">${response[0]['seasons'][i]['tasks'][j]['firstname']} ${response[0]['seasons'][i]['tasks'][j]['lastname']}</th>
+	        				<th class="fixed-side normal" ><span class="${response[0]['seasons'][i]['tasks'][j]['status']}"></span></th> `;
 
 
 	        				start = response[0]['seasons'][i]['tasks'][j]['start'];
@@ -204,6 +206,7 @@ $(document).ready(function() {
 						$('#input-year').keypress(function(event){
 							var keycode = (event.keyCode ? event.keyCode : event.which);
 							if (keycode == '13') {
+								$('#loading').addClass('show-loading');
 								month = parseInt($('.input-month-year input:nth-child(1)').val());
 								year = parseInt($('.input-month-year input:nth-child(2)').val());
 								endDay = daysInMonth(month, year);
