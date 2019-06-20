@@ -272,16 +272,23 @@ $(document).ready(function() {
 	 * @return {[type]}        [chuỗi html trạng thái]
 	 */
 	 function printStatus(start, end, status) {
+
 	 	dayStart = getDay(start);
 	 	dayEnd = getDay(end);
+
 	 	monthStart = getMonth(start);
 	 	monthEnd = getMonth(end);
+
+	 	yearStart = getYear(start);
+	 	yearEnd = getYear(end);
+
+
 	 	if(monthEnd > monthStart) {
 	 		dayEnd = countDay;
 	 	}
 	 	html = ``;
 	 	for(var i = 1; i <= countDay; i++) {
-	 		if((i >= dayStart && i <= dayEnd && monthStart == monthShow) || (i >= 1 && i <= getDay(end)) && monthStart == monthShow-1) {
+	 		if((i >= dayStart && i <= dayEnd && monthStart == monthShow) || (i >= dayStart && i <= countDay && monthStart < monthShow) || (i >= 1 && i <= getDay(end))) {
 	 			html += `<td class="${status}"></td>`;
 	 		} else {
 	 			html += `<td class="status"></td>`;
@@ -289,28 +296,37 @@ $(document).ready(function() {
 	 	}
 	 	return html;
 	 }
-    /**
-     * [getDay lấy ra ngày]
-     * @param  {[type]} date [chuỗi ngày tháng và giờ]
-     * @return {[type]}      [ngày - int]
-     */
-     function getDay(date) {
-     	params = date.split(' ');
-     	params = params[0].split('-');
-     	day = params[2];
-     	return day;
-     }
-    /**
-     * [getDay lấy ra tháng]
-     * @param  {[type]} date [chuỗi ngày tháng và giờ]
-     * @return {[type]}      [tháng - int]
-     */
-     function getMonth(date) {
-     	params = date.split(' ');
-     	params = params[0].split('-');
-     	month = params[1];
-     	return month;
-     }
+	/**
+	* [getDay lấy ra ngày]
+	* @param  {[type]} date [chuỗi ngày tháng và giờ]
+	* @return {[type]}      [ngày - int]
+	*/
+	function getDay(date) {
+		params = date.split(' ');
+		params = params[0].split('-');
+		day = params[2];
+		return day;
+	}
+
+
+	/**
+	* [getDay lấy ra tháng]
+	* @param  {[type]} date [chuỗi ngày tháng và giờ]
+	* @return {[type]}      [tháng - int]
+	*/
+	function getMonth(date) {
+		params = date.split(' ');
+		params = params[0].split('-');
+		month = params[1];
+		return month;
+	}
+
+	function getYear(date) {
+		params = date.split(' ');
+		params = params[0].split('-');
+		year = params[0];
+		return year;
+	}
     /**
      * [getDay lấy ra name]
      * @param  {[type]} date [chuỗi ngày tháng và giờ]
