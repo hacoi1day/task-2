@@ -187,8 +187,8 @@ $(document).ready(function() {
 								month = parseInt($('.input-month-year input:nth-child(1)').val());
 								year = parseInt($('.input-month-year input:nth-child(2)').val());
 								// xử lý đầu vào
-								if(month <= 0 || month > 12 || year < 999 || year > 9999 || isNaN(month) || isNaN(year)) {
-									alert('Tháng nhập chưa hợp lệ');
+								if(month <= 0 || month > 12 || year < 1000 || year > 9999 || isNaN(month) || isNaN(year)) {
+									alert('Tháng hoặc năm chưa hợp lệ');
 								} else {
 									$('#loading').addClass('show-loading');
 									endDay = daysInMonth(month, year);
@@ -208,8 +208,8 @@ $(document).ready(function() {
 								month = parseInt($('.input-month-year input:nth-child(1)').val());
 								year = parseInt($('.input-month-year input:nth-child(2)').val());
 								// xử lý đầu vào
-								if(month <= 0 || month > 12 || year < 999 || year > 9999 || isNaN(month) || isNaN(year)) {
-									alert('Tháng nhập chưa hợp lệ');
+								if(month <= 0 || month > 12 || year < 1000 || year > 9999 || isNaN(month) || isNaN(year)) {
+									alert('Tháng hoặc năm chưa hợp lệ');
 								} else {
 									$('#loading').addClass('show-loading');
 									endDay = daysInMonth(month, year);
