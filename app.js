@@ -176,8 +176,8 @@ $(document).ready(function() {
 				span_date = $('#date').text();
 				$('.main-table #date').one('click', function() {
 					input = `<span class="input-month-year">
-						<input type="text" pattern="\d*" maxlength="2" name="month" class="input-date input-month" id="input-month" value="${monthShow}">/
-						<input type="text" pattern="\d*" maxlength="4" name="year" class="input-date input-year" id="input-year" value="${yearShow}">
+						<input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "2" name="month" class="input-date input-month" id="input-month" value="${monthShow}">/
+						<input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "4" name="year" class="input-date input-year" id="input-year" value="${yearShow}">
 					</span>`;
 					$('.main-table.clone #date').html(input).promise().done(function() {
 						$('#input-month').select();
