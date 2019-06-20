@@ -38,16 +38,16 @@ $(document).ready(function() {
 	        <thead>
 	        <tr>
 	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">&nbsp;</th>
-	        <th rowspan="2" style="padding-top: 20px;" class="fixed-side row-head ptop" scope="col">
+	        <th rowspan="2" style="padding-top: 25px;" class="fixed-side row-head ptop" scope="col">
 	        <label class="input-check">
 	        <input type="checkbox" name="">
 	        <span class="checkmark"></span>
 	        </label>
 	        </th>
-	        <th rowspan="2" style="padding-top: 22px;" class="fixed-side row-head ptop" style="text-transform: uppercase;" scope="col">Công việc</th>
+	        <th rowspan="2" style="padding-top: 25px; text-transform: uppercase;" class="fixed-side row-head ptop" scope="col">Công việc</th>
 	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>bắt đầu</th>
 	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>Kết thúc</th>
-	        <th rowspan="2" style="padding-top: 22px;" class="fixed-side row-head ptop" scope="col">Phụ trách</th>
+	        <th rowspan="2" style="padding-top: 25px;" class="fixed-side row-head ptop" scope="col">Phụ trách</th>
 	        <th colspan="27" class="fixed-side row-head select-month" style="text-align: center; background-color: #283c43;" scope="col">
 	        <i id="old-month" aria-hidden="true" class="fas fa-angle-left"></i>
 	        <span id="date">${monthShow}/${yearShow}</span>
@@ -115,6 +115,12 @@ $(document).ready(function() {
 	        	html += `<tbody id="group-of-rows-${response[0]['seasons'][i]['id']}" class="stage collapse" style="">`;
 	        }
 	        html += `</table></div>`;
+	        html += `<div class="input-month-year">
+					<input type="text" name="month" class="input-date input-month" value="${monthShow}">
+					<input type="text" name="year" class="input-date input-year" value="${yearShow}">
+					<button class="btn btn-outline-info" id="move-month">Đi</button>
+					<button class="btn btn-outline-danger" id="exit-move">x</button>
+				</div>`;
 
 	        $('#data').html(html).promise().done(function(){
 	        	jQuery(document).ready(function() {
@@ -171,6 +177,28 @@ $(document).ready(function() {
 						this.getElementsByTagName('i')[0].classList.remove('fa-caret-up');
 						this.getElementsByTagName('i')[0].classList.add('fa-caret-down');
 					}
+				});
+				$('.main-table #date').on('click', function() {
+					if($('.input-month-year').hasClass('show-input-date')) {
+						$('.input-month-year').removeClass('show-input-date');
+					} else {
+						$('.input-month-year').addClass('show-input-date');
+					}
+				});
+				$('#exit-move').on('click', function() {
+					$('.input-month-year').removeClass('show-input-date');
+				});
+				$('#move-month').on('click', function() {
+					month = parseInt($('.input-month-year input:nth-child(1)').val());
+					year = parseInt($('.input-month-year input:nth-child(2)').val());
+					endDay = daysInMonth(month, year);
+					baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
+					if(month < 10)
+						month = '0' + month;
+					start = 'fromdate=' + year + '-' + month + '-' + '01';
+					end = 'todate=' + year + '-' + month + '-' + endDay;
+					url = baseUrl + '&' + start + '&' + end;
+					loadAjaxTask(url);
 				})
 			});
 	    })

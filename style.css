@@ -273,7 +273,7 @@ tbody.stage td:nth-child(3) {
 }
 
 /*Delay show data*/
-.collapsing {
+/*.collapsing {
   -webkit-transition-delay: 1s;
   transition-delay: 1s;
   visibility: hidden;
@@ -283,7 +283,7 @@ tbody.stage td:nth-child(3) {
   -webkit-transition-delay: 1s;
   transition-delay: 1s;
   visibility: visible;
-}
+}*/
 
 /*Hiệu ứng loading*/
 .main-data {
@@ -305,4 +305,45 @@ tbody.stage td:nth-child(3) {
 }
 .show-loading img {
   display: block;
+}
+
+/*Style date*/
+#date {
+  cursor: pointer;
+}
+.input-month-year {
+  border: 1px solid gray;
+  border-radius: 4px;
+  width: 172px;
+  height: 50px;
+  padding: 10px;
+  display: none;
+  position: absolute;
+  top: 31px;
+  left: 740px;
+  z-index: 1;
+  background-color: white;
+}
+.show-input-date {
+  display: block;
+}
+.input-date {
+  width: 26px;
+  padding: 0px;
+  margin: 0px;
+  background-color: transparent;
+  border: 1px solid gray;
+  border-radius: 3px;
+  display: inline;
+  text-align: center;
+}
+.input-month {
+  width: 26px;
+}
+.input-year {
+  width: 50px;
+}
+#move-month, #exit-move {
+  padding: 0px 8px 0px 8px;
+  margin-bottom: 1px;
 }
