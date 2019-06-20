@@ -91,7 +91,6 @@ $(document).ready(function() {
 	        				<th class="fixed-side normal">${response[0]['seasons'][i]['tasks'][j]['firstname']} ${response[0]['seasons'][i]['tasks'][j]['lastname']}</th>
 	        				<th class="fixed-side normal" ><span class="${response[0]['seasons'][i]['tasks'][j]['status']}"></span></th> `;
 
-
 	        				start = response[0]['seasons'][i]['tasks'][j]['start'];
 	        				end = response[0]['seasons'][i]['tasks'][j]['end'];
 	        				status = response[0]['seasons'][i]['tasks'][j]['priority'];
@@ -177,8 +176,8 @@ $(document).ready(function() {
 				span_date = $('#date').text();
 				$('.main-table #date').one('click', function() {
 					input = `<span class="input-month-year">
-						<input type="text" name="month" class="input-date input-month" id="input-month" value="${monthShow}">/
-						<input type="text" name="year" class="input-date input-year" id="input-year" value="${yearShow}">
+						<input type="text" pattern="\d*" maxlength="2" name="month" class="input-date input-month" id="input-month" value="${monthShow}">/
+						<input type="text" pattern="\d*" maxlength="4" name="year" class="input-date input-year" id="input-year" value="${yearShow}">
 					</span>`;
 					$('.main-table.clone #date').html(input).promise().done(function() {
 						$('#input-month').select();
@@ -188,7 +187,7 @@ $(document).ready(function() {
 								month = parseInt($('.input-month-year input:nth-child(1)').val());
 								year = parseInt($('.input-month-year input:nth-child(2)').val());
 								// xử lý đầu vào
-								if(month <= 0 || month > 12) {
+								if(month <= 0 || month > 12 || year < 999 || year > 9999 || isNaN(month) || isNaN(year)) {
 									alert('Tháng nhập chưa hợp lệ');
 								} else {
 									$('#loading').addClass('show-loading');
@@ -206,17 +205,22 @@ $(document).ready(function() {
 						$('#input-year').keypress(function(event){
 							var keycode = (event.keyCode ? event.keyCode : event.which);
 							if (keycode == '13') {
-								$('#loading').addClass('show-loading');
 								month = parseInt($('.input-month-year input:nth-child(1)').val());
 								year = parseInt($('.input-month-year input:nth-child(2)').val());
-								endDay = daysInMonth(month, year);
-								baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
-								if(month < 10)
-									month = '0' + month;
-								start = 'fromdate=' + year + '-' + month + '-' + '01';
-								end = 'todate=' + year + '-' + month + '-' + endDay;
-								url = baseUrl + '&' + start + '&' + end;
-								loadAjaxTask(url);
+								// xử lý đầu vào
+								if(month <= 0 || month > 12 || year < 999 || year > 9999 || isNaN(month) || isNaN(year)) {
+									alert('Tháng nhập chưa hợp lệ');
+								} else {
+									$('#loading').addClass('show-loading');
+									endDay = daysInMonth(month, year);
+									baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
+									if(month < 10)
+										month = '0' + month;
+									start = 'fromdate=' + year + '-' + month + '-' + '01';
+									end = 'todate=' + year + '-' + month + '-' + endDay;
+									url = baseUrl + '&' + start + '&' + end;
+									loadAjaxTask(url);
+								}
 							}
 						});
 
