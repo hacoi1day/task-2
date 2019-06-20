@@ -169,7 +169,10 @@ table thead tr:nth-child(1) th:nth-child(5) {
   width: 100px;
 }
 table thead tr:nth-child(1) th:nth-child(6) {
-  width: 100px;
+  width: 90px;
+}
+table thead tr:nth-child(1) th:nth-child(7) {
+  width: 60px;
 }
 table.main-table thead th.day {
   width: 25px;
@@ -189,30 +192,19 @@ table thead th.select-month i {
 tbody.session {
   background-color: #ebebeb;
   color: #555557;
+  font-size: 15px;
 }
 tbody.session td {
   font-weight: normal;
   font-size: 14px;
 }
 tbody.stage {
-  color: #4e4f53;
+  font-size: 15px;
 }
 tbody.stage th {
 
 }
 
-tbody.stage td:nth-child(1),
-tbody.stage td:nth-child(2),
-tbody.stage td:nth-child(3),
-tbody.stage td:nth-child(4),
-tbody.stage td:nth-child(5),
-tbody.stage td:nth-child(6) {
-  /*line-height: 15px;*/
-}
-tbody.stage td:nth-child(3) {
-  /*display: inline-block;*/
-  /*width: 300px;*/
-}
 .main-table td.status, .main-table th.status, .main-table tr.status {
   border: 1px solid gray;
 }
@@ -362,3 +354,22 @@ tbody.stage td:nth-child(3) {
 #old-month {
   margin-left: 200px;
 }
+
+/*CSS status*/
+span.in_progress {
+  background-color: #ffc45e;
+  width: 100%;
+  height: 5px;
+  display: block;
+  margin-top: 8px;
+  border-radius: 3px;
+}
+span.completed {
+  background-color: #0787ce;
+  width: 100%;
+  height: 5px;
+  display: block;
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
