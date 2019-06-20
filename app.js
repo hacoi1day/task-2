@@ -17,7 +17,7 @@ $(document).ready(function() {
 	 		type: 'GET',
 	 		dataType: 'json',
 	 		headers: {
-	 			'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLm5leHRmYXJtLnZuXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTYwOTY0NDk0LCJleHAiOjE1NjEwMDA0OTQsIm5iZiI6MTU2MDk2NDQ5NCwianRpIjoiQ01IeXhoWkZUbXFTRjJZdSIsInN1YiI6MjEsInBydiI6Ijk0ZGJkOTYxYWFlZjBlM2NlNjZhZDdkNTBlNjQ3NzE3NjA5ZGRhMjQifQ.a-z4uSSp3T_5Y4DHcNNmLhhHcWxK0me0shKEs0KPPfE'
+	 			'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLm5leHRmYXJtLnZuXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTYxMDAwNTU0LCJleHAiOjE1NjEwMzY1NTQsIm5iZiI6MTU2MTAwMDU1NCwianRpIjoiUWFyVTUxbk5XdFBEWGk2aCIsInN1YiI6MjEsInBydiI6Ijk0ZGJkOTYxYWFlZjBlM2NlNjZhZDdkNTBlNjQ3NzE3NjA5ZGRhMjQifQ.mIhcisMJd9bLF2aVSXuI-ZLda6OcqbQPPvO2OVleB5w'
 	 		},
 	 	})
 	 	.done(function(response) {
@@ -34,7 +34,7 @@ $(document).ready(function() {
 	        // change seasons
 
 	        html = `<div class="table-wrap">
-	        <table style="width: 100%" class="main-table">
+	        <table class="main-table">
 	        <thead>
 	        <tr>
 	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">&nbsp;</th>
@@ -48,10 +48,10 @@ $(document).ready(function() {
 	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>bắt đầu</th>
 	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>Kết thúc</th>
 	        <th rowspan="2" style="padding-top: 25px;" class="fixed-side row-head ptop" scope="col">Phụ trách</th>
-	        <th colspan="27" class="fixed-side row-head select-month" style="text-align: center; background-color: #283c43;" scope="col">
-	        <i id="old-month" aria-hidden="true" class="fas fa-angle-left"></i>
-	        <span id="date">${monthShow}/${yearShow}</span>
-	        <i id="new-month" aria-hidden="true" class="fas fa-angle-right"></i>
+	        <th colspan="${countDay}" class="fixed-side row-head select-month" style="text-align: left; background-color: #283c43; width: 1200px;" scope="col">
+		        <i id="old-month" aria-hidden="true" class="fas fa-angle-left"></i>
+		        <span id="date">${monthShow}/ ${yearShow}</span>
+		        <i id="new-month" aria-hidden="true" class="fas fa-angle-right"></i>
 	        </th>
 	        </tr>
 	        <tr>`;
@@ -115,12 +115,6 @@ $(document).ready(function() {
 	        	html += `<tbody id="group-of-rows-${response[0]['seasons'][i]['id']}" class="stage collapse" style="">`;
 	        }
 	        html += `</table></div>`;
-	        html += `<div class="input-month-year">
-					<input type="text" name="month" class="input-date input-month" value="${monthShow}">
-					<input type="text" name="year" class="input-date input-year" value="${yearShow}">
-					<button class="btn btn-outline-info" id="move-month">Đi</button>
-					<button class="btn btn-outline-danger" id="exit-move">x</button>
-				</div>`;
 
 	        $('#data').html(html).promise().done(function(){
 	        	jQuery(document).ready(function() {
@@ -178,28 +172,53 @@ $(document).ready(function() {
 						this.getElementsByTagName('i')[0].classList.add('fa-caret-down');
 					}
 				});
-				$('.main-table #date').on('click', function() {
-					if($('.input-month-year').hasClass('show-input-date')) {
-						$('.input-month-year').removeClass('show-input-date');
-					} else {
-						$('.input-month-year').addClass('show-input-date');
-					}
+				span_date = $('#date').text();
+				$('.main-table #date').one('click', function() {
+					input = `<span class="input-month-year">
+						<input type="text" name="month" class="input-date input-month" id="input-month" value="${monthShow}">/
+						<input type="text" name="year" class="input-date input-year" id="input-year" value="${yearShow}">
+					</span>`;
+					$('.main-table.clone #date').html(input).promise().done(function() {
+						$('#input-month').select();
+						$('#input-month').keypress(function(event){
+							var keycode = (event.keyCode ? event.keyCode : event.which);
+							if (keycode == '13') {
+								month = parseInt($('.input-month-year input:nth-child(1)').val());
+								year = parseInt($('.input-month-year input:nth-child(2)').val());
+								// xử lý đầu vào
+								if(month <= 0 || month > 12) {
+									alert('Tháng nhập chưa hợp lệ');
+								} else {
+									$('#loading').addClass('show-loading');
+									endDay = daysInMonth(month, year);
+									baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
+									if(month < 10)
+										month = '0' + month;
+									start = 'fromdate=' + year + '-' + month + '-' + '01';
+									end = 'todate=' + year + '-' + month + '-' + endDay;
+									url = baseUrl + '&' + start + '&' + end;
+									loadAjaxTask(url);
+								}
+							}
+						});
+						$('#input-year').keypress(function(event){
+							var keycode = (event.keyCode ? event.keyCode : event.which);
+							if (keycode == '13') {
+								month = parseInt($('.input-month-year input:nth-child(1)').val());
+								year = parseInt($('.input-month-year input:nth-child(2)').val());
+								endDay = daysInMonth(month, year);
+								baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
+								if(month < 10)
+									month = '0' + month;
+								start = 'fromdate=' + year + '-' + month + '-' + '01';
+								end = 'todate=' + year + '-' + month + '-' + endDay;
+								url = baseUrl + '&' + start + '&' + end;
+								loadAjaxTask(url);
+							}
+						});
+
+					});
 				});
-				$('#exit-move').on('click', function() {
-					$('.input-month-year').removeClass('show-input-date');
-				});
-				$('#move-month').on('click', function() {
-					month = parseInt($('.input-month-year input:nth-child(1)').val());
-					year = parseInt($('.input-month-year input:nth-child(2)').val());
-					endDay = daysInMonth(month, year);
-					baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
-					if(month < 10)
-						month = '0' + month;
-					start = 'fromdate=' + year + '-' + month + '-' + '01';
-					end = 'todate=' + year + '-' + month + '-' + endDay;
-					url = baseUrl + '&' + start + '&' + end;
-					loadAjaxTask(url);
-				})
 			});
 	    })
 		.always(function() {
@@ -339,7 +358,7 @@ $(document).ready(function() {
      * @param  {[type]} dayweek [ngày trong tuần bắt đầu từ 0 đến 6]
      * @return {[type]}         [tên ngày trong tuần bằng tiếng Anh với 2 ký tự đầu]
      */
-     function getNameDay(dayweek) {
+    function getNameDay(dayweek) {
      	switch (dayweek) {
      		case 1:
      		return 'MO';
@@ -363,6 +382,6 @@ $(document).ready(function() {
      		return 'SU';
      		break;
      	}
-     }
+    }
 
- });
+});

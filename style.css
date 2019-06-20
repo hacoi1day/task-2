@@ -37,6 +37,7 @@
 .top .right div.view ul li.view-style i {
   margin-right: 5px;
 }
+
 /*data-show*/
 .view li.data-show {
   float: left;
@@ -50,6 +51,7 @@
   color: #555557;
   background-color: transparent;
 }
+
 /*add-data*/
 .view li.add-data {
   float: left;
@@ -83,10 +85,10 @@ table.table thead th {
 /*CSS frozen left column*/
 .table-scroll {
   position:relative;
-  max-width:1200px;
+  max-width:100%;
   margin:auto;
   overflow:hidden;
-  border:1px solid #000;
+  /*border:1px solid #000;*/
 }
 .t {
   text-transform: uppercase;
@@ -148,6 +150,32 @@ table.table thead th {
 }
 
 /*CSS Color*/
+table, table.clone {
+  table-layout: fixed;
+}
+table thead tr:nth-child(1) th:nth-child(1) {
+  width: 30px;
+}
+table thead tr:nth-child(1) th:nth-child(2) {
+  width: 30px;
+}
+table thead tr:nth-child(1) th:nth-child(3) {
+  width: 200px;
+}
+table thead tr:nth-child(1) th:nth-child(4) {
+  width: 100px;
+}
+table thead tr:nth-child(1) th:nth-child(5) {
+  width: 100px;
+}
+table thead tr:nth-child(1) th:nth-child(6) {
+  width: 100px;
+}
+table.main-table thead th.day {
+  width: 25px;
+}
+
+
 table thead {
   background-color: #283c43;
   color: white;
@@ -312,38 +340,25 @@ tbody.stage td:nth-child(3) {
   cursor: pointer;
 }
 .input-month-year {
-  border: 1px solid gray;
-  border-radius: 4px;
-  width: 172px;
-  height: 50px;
-  padding: 10px;
-  display: none;
-  position: absolute;
-  top: 31px;
-  left: 740px;
-  z-index: 1;
-  background-color: white;
-}
-.show-input-date {
-  display: block;
+  background-color: transparent;
+  overflow-y: hidden;
 }
 .input-date {
-  width: 26px;
   padding: 0px;
   margin: 0px;
   background-color: transparent;
-  border: 1px solid gray;
-  border-radius: 3px;
-  display: inline;
+  border: none;
   text-align: center;
+  color: white;
+  margin: 0px;
 }
 .input-month {
-  width: 26px;
+  width: 18px;
 }
 .input-year {
-  width: 50px;
+  width: 36px;
 }
-#move-month, #exit-move {
-  padding: 0px 8px 0px 8px;
-  margin-bottom: 1px;
+
+#old-month {
+  margin-left: 200px;
 }
