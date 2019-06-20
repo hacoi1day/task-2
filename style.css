@@ -206,13 +206,19 @@ tbody.stage {
 }
 
 .Normal {
-  background-color: #8dc15c;
+  background-color: #4dcee4;
   border: 1px solid white;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
 }
 .Critical {
-  background-color: #ef7373;
+  background-color: #c7e1b2;
+  border: 1px solid white;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+.High {
+  background-color: #df2f31;
   border: 1px solid white;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;

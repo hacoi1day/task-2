@@ -67,7 +67,7 @@ $(document).ready(function() {
 	        	for(var i = 0; i < response[0]['seasons'].length; i++) {
 	        		html += `<tbody class="session">
 	        		<tr data-toggle="collapse" data-target="#group-of-rows-${response[0]['seasons'][i]['id']}" aria-expanded="true" aria-controls="group-of-rows-1" class="clickable">
-	        		<th class="fixed-side row-head" style="background-color: #ebebeb; color: black; font-weight: normal;" colspan="37">
+	        		<th class="fixed-side row-head" style="background-color: #ebebeb; color: black; font-weight: bold;" colspan="37">
 	        			<i style="margin-right: 5px;" class="fas fa-caret-down"></i>
 	        			${response[0]['seasons'][i]['name']}
 	        		</th>
