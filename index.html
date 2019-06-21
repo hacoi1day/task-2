@@ -14,56 +14,305 @@
 </head>
 <body>
 	<div class="container my-4">
-		<div class="row">
+		<div id="task-main">
+			<div class="row">
 			<div class="col-12">
 				<div class="top">
 					<div class="left">
 						<h3 id="description" class="title"><i aria-hidden="true" class="far fa-check-circle"></i>Chưa có dữ liệu</h3>
-					</div>
-					<div class="right">
-						<div class="view">
-							<ul>
-								<li class="view-style"><i aria-hidden="true" class="fas fa-list-ul"></i>List</li>
-								<li class="view-style"><i aria-hidden="true" class="fas fa-th-large"></i>Table</li>
-								<li class="view-style"><i aria-hidden="true" class="fas fa-clipboard"></i>Broad</li>
-								<li class="view-style"><i aria-hidden="true" class="far fa-check-square"></i>Member</li>
-								<li class="data-show">
-									<div class="dropdown">
-										<button type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">Hiển thị <strong>Tất cả</strong></button>
-										<div aria-labelledby="dropdownMenu2" class="dropdown-menu">
-											<button type="button" class="dropdown-item">Tất cả</button>
-											<button type="button" class="dropdown-item">Từ ngày</button>
-											<button type="button" class="dropdown-item">Theo tháng</button>
+						</div>
+						<div class="right">
+							<div class="view">
+								<ul>
+									<li class="view-style"><i aria-hidden="true" class="fas fa-list-ul"></i>List</li>
+									<li class="view-style"><i aria-hidden="true" class="fas fa-th-large"></i>Table</li>
+									<li class="view-style"><i aria-hidden="true" class="fas fa-clipboard"></i>Broad</li>
+									<li class="view-style"><i aria-hidden="true" class="far fa-check-square"></i>Member</li>
+									<li class="data-show">
+										<div class="dropdown">
+											<button type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">Hiển thị <strong>Tất cả</strong></button>
+											<div aria-labelledby="dropdownMenu2" class="dropdown-menu">
+												<button type="button" class="dropdown-item">Tất cả</button>
+												<button type="button" class="dropdown-item">Từ ngày</button>
+												<button type="button" class="dropdown-item">Theo tháng</button>
+											</div>
 										</div>
-									</div>
-								</li>
-								<li class="add-data">
-									<div class="btn-group">
-										<button type="button" class="btn btn-success">
-											<i aria-hidden="true" class="fas fa-plus"></i>Thêm
-										</button> 
-										<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-success dropdown-toggle dropdown-toggle-split">
-											<span class="sr-only">Toggle Dropdown</span>
-										</button> 
-										<div class="dropdown-menu">
-											<a href="#" class="dropdown-item">Thêm</a>
+									</li>
+									<li class="add-data">
+										<div class="btn-group">
+											<button type="button" class="btn btn-success">
+												<i aria-hidden="true" class="fas fa-plus"></i>Thêm
+											</button> 
+											<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-success dropdown-toggle dropdown-toggle-split">
+												<span class="sr-only">Toggle Dropdown</span>
+											</button> 
+											<div class="dropdown-menu">
+												<a href="#" class="dropdown-item">Thêm</a>
+											</div>
 										</div>
-									</div>
-								</li>
-							</ul>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div> 
-			<div class="col-12 main-data">
-				<div id="data" class="table-scroll my-2 data">
-				</div>
-				<div id="loading" class="loading">
+				</div> 
+				<div class="col-12 main-data">
+					<div id="data" class="table-scroll my-2 data">
+					</div>
+					<div id="loading" class="loading">
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="date-funtion.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		jQuery(document).ready(function() {
+		jQuery(".main-table").clone(true).appendTo('#data').addClass('clone');
+
+		// lấy tháng hiện tại
+		var today = new Date();
+		console.log();
+		month = today.getMonth() + 1;
+		year = today.getFullYear();
+		countDay = DateFunction.daysInMonth(month, year);
+		if(month < 10) {
+			month = '0' + month;
+		}
+		// lấy url
+		sSource = `https://api.nextfarm.vn/api/crop/overview?cropid=1&fromdate=${year}-${month}-01&todate=${year}-${month}-${countDay}`;
+		// load
+		loadAjaxTask(sSource);
+	});
+	
+	function loadAjaxTask(url) {
+	 	$.ajax({
+	 		url: url,
+	 		type: 'GET',
+	 		dataType: 'json',
+	 		headers: {
+	 			'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLm5leHRmYXJtLnZuXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTYxMDc5MTY4LCJleHAiOjE1NjExMTUxNjgsIm5iZiI6MTU2MTA3OTE2OCwianRpIjoiN0dMc0xlUkhxS1JLSzhRcSIsInN1YiI6MjEsInBydiI6Ijk0ZGJkOTYxYWFlZjBlM2NlNjZhZDdkNTBlNjQ3NzE3NjA5ZGRhMjQifQ.ZV-DSn2bD8v6CgvgyqA8oJsKi9-oCk3ry95Alx8albE'
+	 		},
+	 	})
+	 	.done(function(response) {
+	        // change title
+	        $('#description').html('<i aria-hidden="true" class="far fa-check-circle"></i>' + response['0']['description']);
+	        params = url.split('&');
+	        params = params[1].split('=');
+	        params = params[1].split('-');
+	        yearShow = params[0];
+	        monthShow = params[1];
+	        allDay = DateFunction.getAllDayInMonth(monthShow, yearShow);
+	        // lấy ra số lượng ngày trong tháng
+	        countDay = allDay.length;
+	        // change seasons
+
+	        html = `<div class="table-wrap">
+	        <table class="main-table">
+	        <thead>
+	        <tr>
+	        <th rowspan="2" class="fixed-side row-head ptop" scope="col">&nbsp;</th>
+	        <th rowspan="2" style="padding-top: 25px;" class="fixed-side row-head ptop" scope="col">
+	        <label class="input-check">
+	        <input type="checkbox" name="">
+	        <span class="checkmark"></span>
+	        </label>
+	        </th>
+	        <th rowspan="2" style="padding-top: 25px; text-transform: uppercase;" class="fixed-side row-head ptop" scope="col">Công việc</th>
+	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>bắt đầu</th>
+	        <th rowspan="2" style="padding-top: 16px;" class="fixed-side row-head ptop text-center" scope="col">Ngày<br>Kết thúc</th>
+	        <th rowspan="2" style="padding-top: 25px;" class="fixed-side row-head ptop" scope="col">Phụ trách</th>
+	        <th rowspan="2" style="padding-top: 16px; text-align: center;" class="fixed-side row-head ptop" scope="col">Tình<br>trạng</th>
+	        <th colspan="${countDay}" class="fixed-side row-head select-month" style="text-align: left; background-color: #283c43; width: 1200px;" scope="col">
+		        <i id="old-month" aria-hidden="true" class="fas fa-angle-left"></i>
+		        <span id="date">${monthShow}/ ${yearShow}</span>
+		        <i id="new-month" aria-hidden="true" class="fas fa-angle-right"></i>
+	        </th>
+	        </tr>
+	        <tr>`;
+	        for (var i = 0; i < countDay; i++)
+	        {
+	        	html += `<th scope="col" style="" class="day text-center">${allDay[i][0]}<br>${allDay[i][1]}</th> `;
+	        }
+	        html += `</tr>`;
+	        html += `</thead>`;
+
+	        if(response[0]['seasons'].length > 0) {
+	        	for(var i = 0; i < response[0]['seasons'].length; i++) {
+	        		html += `<tbody class="session">
+	        		<tr data-toggle="collapse" data-target="#group-of-rows-${response[0]['seasons'][i]['id']}" aria-expanded="true" aria-controls="group-of-rows-1" class="clickable">
+	        		<th class="fixed-side row-head" style="background-color: #ebebeb; color: black; font-weight: bold;" colspan="37">
+	        			<i style="margin-right: 5px;" class="fas fa-caret-down"></i>
+	        			${response[0]['seasons'][i]['name']}
+	        		</th>
+	        		</tr>
+	        		</tbody>`;
+	        		html += `<tbody id="group-of-rows-${response[0]['seasons'][i]['id']}" class="stage collapse show" style="">`;
+
+	        		if(response[0]['seasons'][i]['tasks'].length > 0) {
+	        			for (var j = 0; j < response[0]['seasons'][i]['tasks'].length; j++) {
+	        				html += `<tr style="border-bottom: 1px solid gray">`;
+	        				html += `<th class="fixed-side normal">${response[0]['seasons'][i]['tasks'][j]['id']}</th> 
+	        				<th class="fixed-side normal">
+	        				<label class="input-check">
+	        				<input type="checkbox" name="">
+	        				<span class="checkmark"></span>
+	        				</label>
+	        				</th> 
+	        				<th class="fixed-side normal">${response[0]['seasons'][i]['tasks'][j]['category_name']}</th> 
+	        				<th class="fixed-side normal">${DateFunction.formatDate(response[0]['seasons'][i]['tasks'][j]['start'])}</th>
+	        				<th class="fixed-side normal">${DateFunction.formatDate(response[0]['seasons'][i]['tasks'][j]['end'])}</th> 
+	        				<th class="fixed-side normal">${response[0]['seasons'][i]['tasks'][j]['firstname']} ${response[0]['seasons'][i]['tasks'][j]['lastname']}</th>
+	        				<th class="fixed-side normal" ><span class="${response[0]['seasons'][i]['tasks'][j]['status']}"></span></th> `;
+
+	        				start = response[0]['seasons'][i]['tasks'][j]['start'];
+	        				end = response[0]['seasons'][i]['tasks'][j]['end'];
+	        				status = response[0]['seasons'][i]['tasks'][j]['priority'];
+	        				html += DateFunction.printStatus(start, end, status);
+	        				html += `</tr>`;
+	        			}
+	        		} else {
+	        			html += `<tr>`;
+	        			html += `<th colspan="37" class="fixed-side normal">Không có dữ liệu</th>`;
+	        			html += `</tr>`;
+	        		}
+	        		
+	        		html += `</tbody>`;
+	        	}
+	        } else {
+	        	html += `<tbody class="session">
+	        	<tr>
+	        	<th class="fixed-side row-head" style="background-color: #ebebeb; color: black; font-weight: normal;" colspan="37">
+	        	Không có dữ liệu
+	        	</th>
+	        	</tr>
+	        	</tbody>`;
+	        	html += `<tbody id="group-of-rows-${response[0]['seasons'][i]['id']}" class="stage collapse" style="">`;
+	        }
+	        html += `</table></div>`;
+
+	        $('#data').html(html).promise().done(function(){
+	        	// scroll bảng
+	        	jQuery(document).ready(function() {
+					jQuery(".main-table").clone(true).appendTo('#data').addClass('clone');
+				});
+				// xử lý khi chuyển tháng
+				$('#old-month').click(function() {
+					// hiển thị loading
+					$('#loading').addClass('show-loading');
+					month = DateFunction.getMonthCurrent();
+					year = DateFunction.getYearCurrent();
+					if(month == 1) {
+						month = 12;
+						year--;
+					} else {
+						month--;
+					}
+					endDay = DateFunction.daysInMonth(month, year);
+					baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
+					if(month < 10)
+						month = '0' + month;
+					start = 'fromdate=' + year + '-' + month + '-' + '01';
+					end = 'todate=' + year + '-' + month + '-' + endDay;
+					url = baseUrl + '&' + start + '&' + end;
+					loadAjaxTask(url);
+				});
+
+				$('#new-month').on('click', function() {
+					// hiển thị loading
+					$('#loading').addClass('show-loading');
+					month = DateFunction.getMonthCurrent();
+					year = DateFunction.getYearCurrent();
+					if(month == 12) {
+						month = 1;
+						year++;
+					} else {
+						month++;
+					}
+					endDay = DateFunction.daysInMonth(month, year);
+					baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
+					if(month < 10)
+						month = '0' + month;
+					start = 'fromdate=' + year + '-' + month + '-' + '01';
+					end = 'todate=' + year + '-' + month + '-' + endDay;
+					url = baseUrl + '&' + start + '&' + end;
+					loadAjaxTask(url);
+				});
+
+				$('.clickable').on('click', function() {
+					if(this.getElementsByTagName('i')[0].classList.contains('fa-caret-down')) {
+						this.getElementsByTagName('i')[0].classList.add('fa-caret-up');
+						this.getElementsByTagName('i')[0].classList.remove('fa-caret-down');
+					} else {
+						this.getElementsByTagName('i')[0].classList.remove('fa-caret-up');
+						this.getElementsByTagName('i')[0].classList.add('fa-caret-down');
+					}
+				});
+				span_date = $('#date').text();
+				$('.main-table #date').one('click', function() {
+					input = `<span class="input-month-year">
+						<input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "2" name="month" class="input-date input-month" id="input-month" value="${monthShow}">/
+						<input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "4" name="year" class="input-date input-year" id="input-year" value="${yearShow}">
+					</span>`;
+					$('.main-table.clone #date').html(input).promise().done(function() {
+						$('#input-month').select();
+						$('#input-month').keypress(function(event){
+							var keycode = (event.keyCode ? event.keyCode : event.which);
+							if (keycode == '13') {
+								month = parseInt($('.input-month-year input:nth-child(1)').val());
+								year = parseInt($('.input-month-year input:nth-child(2)').val());
+								// xử lý đầu vào
+								if(month <= 0 || month > 12 || year < 1000 || year > 9999 || isNaN(month) || isNaN(year)) {
+									alert('Tháng hoặc năm chưa hợp lệ');
+								} else {
+									$('#loading').addClass('show-loading');
+									endDay = DateFunction.daysInMonth(month, year);
+									baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
+									if(month < 10)
+										month = '0' + month;
+									start = 'fromdate=' + year + '-' + month + '-' + '01';
+									end = 'todate=' + year + '-' + month + '-' + endDay;
+									url = baseUrl + '&' + start + '&' + end;
+									loadAjaxTask(url);
+								}
+							}
+						});
+						$('#input-year').keypress(function(event){
+							var keycode = (event.keyCode ? event.keyCode : event.which);
+							if (keycode == '13') {
+								month = parseInt($('.input-month-year input:nth-child(1)').val());
+								year = parseInt($('.input-month-year input:nth-child(2)').val());
+								// xử lý đầu vào
+								if(month <= 0 || month > 12 || year < 1000 || year > 9999 || isNaN(month) || isNaN(year)) {
+									alert('Tháng hoặc năm chưa hợp lệ');
+								} else {
+									$('#loading').addClass('show-loading');
+									endDay = DateFunction.daysInMonth(month, year);
+									baseUrl = 'https://api.nextfarm.vn/api/crop/overview?cropid=1';
+									if(month < 10)
+										month = '0' + month;
+									start = 'fromdate=' + year + '-' + month + '-' + '01';
+									end = 'todate=' + year + '-' + month + '-' + endDay;
+									url = baseUrl + '&' + start + '&' + end;
+									loadAjaxTask(url);
+								}
+							}
+						});
+
+					});
+				});
+			});
+	    })
+		.always(function() {
+			$('#loading').removeClass('show-loading');
+		});
+	}
+});
+
+</script>
+
 	</body>
 	</html>

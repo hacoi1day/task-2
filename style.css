@@ -4,38 +4,38 @@
   font-family: Arial;
 }
 /*Hidden up/down number input*/
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+#task-main input::-webkit-outer-spin-button,
+#task-main input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-input[type=number] {
+#task-main input[type=number] {
     -moz-appearance:textfield;
 }
 /*CSS top*/
-.top {
+#task-main .top {
   background-color: #f7f7f7;
 }
-.top .left {
+#task-main .top .left {
   float: left;
 }
-.top .left h3.title {
+#task-main .top .left h3.title {
   font-weight: bold;
   font-size: 36px;
 }
-.top .left h3.title i {
+#task-main .top .left h3.title i {
   margin-right: 10px;
   font-size: 24px;
   font-weight: normal;
   color: #d3d3d3;
 }
-.top .right {
+#task-main .top .right {
   float: right;
 }
-.top .right div.view ul {
+#task-main .top .right div.view ul {
   list-style-type: none;
 }
-.top .right div.view ul li.view-style {
+#task-main .top .right div.view ul li.view-style {
   float: left;
   padding: 3px 10px;
   margin-right: 1px;
@@ -43,16 +43,16 @@ input[type=number] {
   border-radius: 3px;
   color: #555557;
 }
-.top .right div.view ul li.view-style i {
+#task-main .top .right div.view ul li.view-style i {
   margin-right: 5px;
 }
 
 /*data-show*/
-.view li.data-show {
+#task-main .view li.data-show {
   float: left;
   margin-left: 7px;
 }
-.view li.data-show button#dropdownMenu2 {
+#task-main .view li.data-show button#dropdownMenu2 {
   padding: 3px 10px;
   margin-right: 1px;
   border: 1px solid #b5b5b5;
@@ -62,163 +62,163 @@ input[type=number] {
 }
 
 /*add-data*/
-.view li.add-data {
+#task-main .view li.add-data {
   float: left;
   margin-left: 7px;
 }
-.add-data button {
+#task-main .add-data button {
   padding: 3px 10px;
   border-radius: 3px;
   color: white;
 }
-.add-data button i {
+#task-main .add-data button i {
   margin-right: 5px;
 }
 
-tr.select-month {
+#task-main tr.select-month {
   background-color: #283d42;
 }
 
-tr.clickable {
+#task-main tr.clickable {
   cursor: pointer;
 }
-tr.clickable td i {
+#task-main tr.clickable td i {
   margin-right: 15px;
 }
-table thead tr th {
+#task-main table thead tr th {
   /*text-align: center;*/
 }
-table.table thead th {
+#task-main table.table thead th {
   border-bottom: none;
 }
 /*CSS frozen left column*/
-.table-scroll {
+#task-main .table-scroll {
   position:relative;
   max-width:100%;
   margin:auto;
   overflow:hidden;
 }
-.t {
+#task-main .t {
   text-transform: uppercase;
 }
-.table-wrap {
+#task-main .table-wrap {
   width:100%;
   overflow:auto;
 }
-.table-wrap table .row-head {
+#task-main .table-wrap table .row-head {
   font-weight: normal;
 }
-.table-scroll table {
+#task-main .table-scroll table {
   width:100%;
   margin:auto;
   /*border-collapse:separate;*/
   border-spacing:0;
 }
-.table-scroll th, .table-scroll td {
+#task-main .table-scroll th, .table-scroll td {
   padding:5px 10px;
   white-space:nowrap;
   vertical-align:top;
 }
-.clone {
+#task-main .clone {
   position:absolute;
   top:0;
   left:0;
 }
-.clone th, .clone td {
+#task-main .clone th, .clone td {
   visibility:hidden;
 }
-.clone td, .clone th {
+#task-main .clone td, .clone th {
   border-color:transparent;
 }
-.clone tbody th {
+#task-main .clone tbody th {
   visibility:visible;
 }
-.clone .fixed-side {
+#task-main .clone .fixed-side {
   background-color: white;
   color: #312D2D;
   visibility:visible;
 }
-.clone .row-head {
+#task-main .clone .row-head {
   background-color: #148e08;
   color: white;
   font-weight: normal;
 }
-.row-head {
+#task-main .row-head {
   /*background-color: ;*/
   color: white;
 }
-.ptop {
+#task-main .ptop {
   /*padding-right: 13px;*/
 }
-.clone .normal {
+#task-main .clone .normal {
   font-weight: normal;
 }
-.clone thead, .clone tfoot{
+#task-main .clone thead, .clone tfoot{
   background:transparent;
   border: none;
 }
 
 /*CSS Color*/
-table, table.clone {
+#task-main table, table.clone {
   table-layout: fixed;
 }
 
-table.main-table thead th.day {
+#task-main table.main-table thead th.day {
   width: 25px;
 }
 
-table thead {
+#task-main table thead {
   background-color: #283c43;
   color: white;
   font-style: normal;
 }
-table thead th.select-month i {
+#task-main table thead th.select-month i {
   margin-left: 20px;
   margin-right: 20px;
   cursor: pointer;
 }
-tbody.session {
+#task-main tbody.session {
   background-color: #ebebeb;
   color: #555557;
   font-size: 15px;
 }
-tbody.session td {
+#task-main tbody.session td {
   font-weight: normal;
   font-size: 14px;
 }
-tbody.stage {
+#task-main tbody.stage {
   font-size: 15px;
 }
 
-.main-table td.status, .main-table th.status, .main-table tr.status {
+#task-main .main-table td.status, .main-table th.status, .main-table tr.status {
   border: 1px solid gray;
 }
 
-.Normal {
+#task-main .Normal {
   background-color: #4dcee4;
   border: 1px solid white;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
 }
-.Critical {
+#task-main .Critical {
   background-color: #c7e1b2;
   border: 1px solid white;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
 }
-.High {
+#task-main .High {
   background-color: #df2f31;
   border: 1px solid white;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
 }
-.status {
+#task-main .status {
   border: 1px solid gray;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
 }
 
-.day {
+#task-main .day {
   padding: 0px 3px!important;
   border-right: 1px solid white;
   font-weight: normal;
@@ -228,7 +228,7 @@ tbody.stage {
 }
 
 /*Custom checkbox*/
-.input-check {
+#task-main .input-check {
   display: block;
   position: relative;
   padding-right: 10px;
@@ -240,14 +240,14 @@ tbody.stage {
   -ms-user-select: none;
   user-select: none;
 }
-.input-check input {
+#task-main .input-check input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 }
-.checkmark {
+#task-main .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -257,21 +257,21 @@ tbody.stage {
   margin-top: 4px;
   border-radius: 2px;
 }
-.input-check:hover input ~ .checkmark {
+#task-main .input-check:hover input ~ .checkmark {
   background-color: #ccc;
 }
-.input-check input:checked ~ .checkmark {
+#task-main .input-check input:checked ~ .checkmark {
   background-color: green;
 }
-.checkmark:after {
+#task-main .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
-.input-check input:checked ~ .checkmark:after {
+#task-main .input-check input:checked ~ .checkmark:after {
   display: block;
 }
-.input-check .checkmark:after {
+#task-main .input-check .checkmark:after {
   left: 5px;
   top: 2px;
   width: 5px;
@@ -320,7 +320,7 @@ tbody.stage {
 }*/
 
 /*Hiệu ứng loading*/
-.loading {
+#task-main .loading {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -335,7 +335,7 @@ tbody.stage {
   animation: spin 2s linear infinite;
   display: none;
 }
-.show-loading {
+#task-main .show-loading {
   display: block;
 }
 
@@ -345,14 +345,14 @@ tbody.stage {
 }
 
 /*Style date*/
-#date {
+#task-main #date {
   cursor: pointer;
 }
-.input-month-year {
+#task-main .input-month-year {
   background-color: transparent;
   overflow-y: hidden;
 }
-.input-date {
+#task-main .input-date {
   padding: 0px;
   margin: 0px;
   background-color: transparent;
@@ -361,17 +361,17 @@ tbody.stage {
   color: white;
   margin: 0px;
 }
-.input-month {
+#task-main .input-month {
   width: 18px;
 }
-.input-year {
+#task-main .input-year {
   width: 36px;
 }
 
 
 
 /*CSS status*/
-span.in_progress {
+#task-main span.in_progress {
   background-color: #ffc45e;
   width: 100%;
   height: 5px;
@@ -379,7 +379,7 @@ span.in_progress {
   margin-top: 8px;
   border-radius: 3px;
 }
-span.completed {
+#task-main span.completed {
   background-color: #0787ce;
   width: 100%;
   height: 5px;
@@ -390,52 +390,52 @@ span.completed {
 
 /*Response*/
 @media (min-width: 576px) { 
-  table thead tr:nth-child(1) th:nth-child(1) {
+  #task-main table thead tr:nth-child(1) th:nth-child(1) {
     width: 30px;
   }
-  table thead tr:nth-child(1) th:nth-child(2) {
+  #task-main table thead tr:nth-child(1) th:nth-child(2) {
     width: 30px;
   }
-  table thead tr:nth-child(1) th:nth-child(3) {
+  #task-main table thead tr:nth-child(1) th:nth-child(3) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(4) {
+  #task-main table thead tr:nth-child(1) th:nth-child(4) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(5) {
+  #task-main table thead tr:nth-child(1) th:nth-child(5) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(6) {
+  #task-main table thead tr:nth-child(1) th:nth-child(6) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(7) {
+  #task-main table thead tr:nth-child(1) th:nth-child(7) {
     width: 60px;
   }
-  #old-month {
+  #task-main #old-month {
     margin-left: 0px;
   }
 }
 
 @media (min-width: 768px) {
-  table thead tr:nth-child(1) th:nth-child(1) {
+  #task-main table thead tr:nth-child(1) th:nth-child(1) {
     width: 30px;
   }
-  table thead tr:nth-child(1) th:nth-child(2) {
+  #task-main table thead tr:nth-child(1) th:nth-child(2) {
     width: 30px;
   }
-  table thead tr:nth-child(1) th:nth-child(3) {
+  #task-main table thead tr:nth-child(1) th:nth-child(3) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(4) {
+  #task-main table thead tr:nth-child(1) th:nth-child(4) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(5) {
+  #task-main table thead tr:nth-child(1) th:nth-child(5) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(6) {
+  #task-main table thead tr:nth-child(1) th:nth-child(6) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(7) {
+  #task-main table thead tr:nth-child(1) th:nth-child(7) {
     width: 60px;
   }
   #old-month {
@@ -444,55 +444,55 @@ span.completed {
 }
 
 @media (min-width: 992px) {
-  table thead tr:nth-child(1) th:nth-child(1) {
+  #task-main table thead tr:nth-child(1) th:nth-child(1) {
     width: 30px;
   }
-  table thead tr:nth-child(1) th:nth-child(2) {
+  #task-main table thead tr:nth-child(1) th:nth-child(2) {
     width: 30px;
   }
-  table thead tr:nth-child(1) th:nth-child(3) {
+  #task-main table thead tr:nth-child(1) th:nth-child(3) {
     width: 250px;
   }
-  table thead tr:nth-child(1) th:nth-child(4) {
+  #task-main table thead tr:nth-child(1) th:nth-child(4) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(5) {
+  #task-main table thead tr:nth-child(1) th:nth-child(5) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(6) {
+  #task-main table thead tr:nth-child(1) th:nth-child(6) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(7) {
+  #task-main table thead tr:nth-child(1) th:nth-child(7) {
     width: 60px;
   }
-  #old-month {
+  #task-main #old-month {
     margin-left: 70px;
   }
 }
 
 @media (min-width: 1200px) {
-  table thead tr:nth-child(1) th:nth-child(1) {
+  #task-main table thead tr:nth-child(1) th:nth-child(1) {
     width: 30px;
   }
-  table thead tr:nth-child(1) th:nth-child(2) {
+  #task-main table thead tr:nth-child(1) th:nth-child(2) {
     width: 30px;
   }
-  table thead tr:nth-child(1) th:nth-child(3) {
+  #task-main table thead tr:nth-child(1) th:nth-child(3) {
     width: 200px;
   }
-  table thead tr:nth-child(1) th:nth-child(4) {
+  #task-main table thead tr:nth-child(1) th:nth-child(4) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(5) {
+  #task-main table thead tr:nth-child(1) th:nth-child(5) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(6) {
+  #task-main table thead tr:nth-child(1) th:nth-child(6) {
     width: 100px;
   }
-  table thead tr:nth-child(1) th:nth-child(7) {
+  #task-main table thead tr:nth-child(1) th:nth-child(7) {
     width: 60px;
   }
-  #old-month {
+  #task-main #old-month {
     margin-left: 200px;
   }
 }
