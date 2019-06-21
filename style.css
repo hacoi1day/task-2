@@ -3,15 +3,14 @@
   padding: 0px;
   font-family: Arial;
 }
+/*Hidden up/down number input*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
 }
-
 input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+    -moz-appearance:textfield;
 }
 /*CSS top*/
 .top {
@@ -179,7 +178,7 @@ table thead tr:nth-child(1) th:nth-child(5) {
   width: 100px;
 }
 table thead tr:nth-child(1) th:nth-child(6) {
-  width: 90px;
+  width: 100px;
 }
 table thead tr:nth-child(1) th:nth-child(7) {
   width: 60px;

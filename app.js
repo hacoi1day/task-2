@@ -17,7 +17,7 @@ $(document).ready(function() {
 	 		type: 'GET',
 	 		dataType: 'json',
 	 		headers: {
-	 			'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLm5leHRmYXJtLnZuXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTYxMDAwNTU0LCJleHAiOjE1NjEwMzY1NTQsIm5iZiI6MTU2MTAwMDU1NCwianRpIjoiUWFyVTUxbk5XdFBEWGk2aCIsInN1YiI6MjEsInBydiI6Ijk0ZGJkOTYxYWFlZjBlM2NlNjZhZDdkNTBlNjQ3NzE3NjA5ZGRhMjQifQ.mIhcisMJd9bLF2aVSXuI-ZLda6OcqbQPPvO2OVleB5w'
+	 			'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLm5leHRmYXJtLnZuXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTYxMDc5MTY4LCJleHAiOjE1NjExMTUxNjgsIm5iZiI6MTU2MTA3OTE2OCwianRpIjoiN0dMc0xlUkhxS1JLSzhRcSIsInN1YiI6MjEsInBydiI6Ijk0ZGJkOTYxYWFlZjBlM2NlNjZhZDdkNTBlNjQ3NzE3NjA5ZGRhMjQifQ.ZV-DSn2bD8v6CgvgyqA8oJsKi9-oCk3ry95Alx8albE'
 	 		},
 	 	})
 	 	.done(function(response) {
@@ -292,8 +292,15 @@ $(document).ready(function() {
 	 					html += `<td class="status"></td>`;
 	 				}
 	 			} else if (monthStart < monthEnd) {
-	 				if (monthShow < monthEnd) {
+	 				if (monthShow == monthStart) {
 	 					if (i >= dayStart && i <= countDay) {
+	 						html += `<td class="${status}"></td>`;
+	 					} else {
+	 						html += `<td class="status"></td>`;
+	 					}
+	 				}
+	 				else if (monthShow < monthEnd) {
+	 					if (i >= 1 && i <= countDay) {
 	 						html += `<td class="${status}"></td>`;
 	 					} else {
 	 						html += `<td class="status"></td>`;
