@@ -162,27 +162,7 @@ table.table thead th {
 table, table.clone {
   table-layout: fixed;
 }
-table thead tr:nth-child(1) th:nth-child(1) {
-  width: 30px;
-}
-table thead tr:nth-child(1) th:nth-child(2) {
-  width: 30px;
-}
-table thead tr:nth-child(1) th:nth-child(3) {
-  width: 200px;
-}
-table thead tr:nth-child(1) th:nth-child(4) {
-  width: 100px;
-}
-table thead tr:nth-child(1) th:nth-child(5) {
-  width: 100px;
-}
-table thead tr:nth-child(1) th:nth-child(6) {
-  width: 100px;
-}
-table thead tr:nth-child(1) th:nth-child(7) {
-  width: 60px;
-}
+
 table.main-table thead th.day {
   width: 25px;
 }
@@ -388,9 +368,7 @@ tbody.stage {
   width: 36px;
 }
 
-#old-month {
-  margin-left: 200px;
-}
+
 
 /*CSS status*/
 span.in_progress {
@@ -412,17 +390,109 @@ span.completed {
 
 /*Response*/
 @media (min-width: 576px) { 
-  
+  table thead tr:nth-child(1) th:nth-child(1) {
+    width: 30px;
+  }
+  table thead tr:nth-child(1) th:nth-child(2) {
+    width: 30px;
+  }
+  table thead tr:nth-child(1) th:nth-child(3) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(4) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(5) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(6) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(7) {
+    width: 60px;
+  }
+  #old-month {
+    margin-left: 0px;
+  }
 }
 
 @media (min-width: 768px) {
-  
+  table thead tr:nth-child(1) th:nth-child(1) {
+    width: 30px;
+  }
+  table thead tr:nth-child(1) th:nth-child(2) {
+    width: 30px;
+  }
+  table thead tr:nth-child(1) th:nth-child(3) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(4) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(5) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(6) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(7) {
+    width: 60px;
+  }
+  #old-month {
+    margin-left: 20px;
+  }
 }
 
 @media (min-width: 992px) {
-
+  table thead tr:nth-child(1) th:nth-child(1) {
+    width: 30px;
+  }
+  table thead tr:nth-child(1) th:nth-child(2) {
+    width: 30px;
+  }
+  table thead tr:nth-child(1) th:nth-child(3) {
+    width: 250px;
+  }
+  table thead tr:nth-child(1) th:nth-child(4) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(5) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(6) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(7) {
+    width: 60px;
+  }
+  #old-month {
+    margin-left: 70px;
+  }
 }
 
 @media (min-width: 1200px) {
-
+  table thead tr:nth-child(1) th:nth-child(1) {
+    width: 30px;
+  }
+  table thead tr:nth-child(1) th:nth-child(2) {
+    width: 30px;
+  }
+  table thead tr:nth-child(1) th:nth-child(3) {
+    width: 200px;
+  }
+  table thead tr:nth-child(1) th:nth-child(4) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(5) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(6) {
+    width: 100px;
+  }
+  table thead tr:nth-child(1) th:nth-child(7) {
+    width: 60px;
+  }
+  #old-month {
+    margin-left: 200px;
+  }
 }

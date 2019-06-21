@@ -118,9 +118,13 @@ $(document).ready(function() {
 	        html += `</table></div>`;
 
 	        $('#data').html(html).promise().done(function(){
+	        	// scroll bảng
 	        	jQuery(document).ready(function() {
 					jQuery(".main-table").clone(true).appendTo('#data').addClass('clone');
 				});
+	        	// lấy độ rộng để response
+	        	console.log($('#data').width());
+
 				// xử lý khi chuyển tháng
 				$('#old-month').click(function() {
 					// hiển thị loading
